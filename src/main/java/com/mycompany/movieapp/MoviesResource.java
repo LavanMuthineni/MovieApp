@@ -5,11 +5,14 @@
  */
 package com.mycompany.movieapp;
 
+import com.mycompany.movieapp.models.MaxProfitResponse;
+import com.mycompany.movieapp.models.Movie;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.*;
 
 /**
  *
@@ -19,6 +22,12 @@ import javax.ws.rs.core.MediaType;
 @Path("movies")
 @Produces(MediaType.APPLICATION_JSON)
 public class MoviesResource {
+    
+    private MovieController movieController;
+    
+    public MoviesResource(MovieController movieController){
+        this.movieController = movieController;
+    }
  
     @GET
     @Path("/message")
@@ -28,7 +37,9 @@ public class MoviesResource {
     
     @POST
     @Path("/maxProfit")
-    public int maxProfit(){
-        return -1;
+    public MaxProfitResponse maxProfit(List<Movie> movies){
+        //System.out.println(movie.getName()+ " " + movie.getStartDate()+ " " + movie.getEndDate());
+        int maxProfit = movieController.getMaxProfit(movies);
+        return new MaxProfitResponse(maxProfit);
     }
 }

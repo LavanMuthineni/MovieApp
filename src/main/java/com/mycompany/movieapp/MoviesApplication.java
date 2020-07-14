@@ -19,7 +19,7 @@ public class MoviesApplication extends Application<AppConfig> {
 
      @Override
     public void run(AppConfig configuration, Environment e) throws Exception {
-        MoviesResource resource = new MoviesResource();
+        MoviesResource resource = new MoviesResource(new MovieController());
         e.jersey().register(resource);
     }
     
