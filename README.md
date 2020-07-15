@@ -9,12 +9,12 @@ Algo Logic Class : MovieController.java
 
 Run API :  
 
-1. Clone the Repo
+1. Clone the Repo : 
   git clone https://github.com/LavanMuthineni/MovieApp.git
 
 2. go to MovieApp project cloned above
 
-3. Run API : run the MovieApp jar 
+3. Run API : run the MovieApp jar :
    java -jar target/MovieApp-1.0.1.jar
 
 4. Use the below API sample 
