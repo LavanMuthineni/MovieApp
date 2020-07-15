@@ -38,8 +38,7 @@ public class MoviesResource {
     @POST
     @Path("/maxProfit")
     public MaxProfitResponse maxProfit(List<Movie> movies){
-        //System.out.println(movie.getName()+ " " + movie.getStartDate()+ " " + movie.getEndDate());
-        int maxProfit = movieController.getMaxProfit(movies);
-        return new MaxProfitResponse(maxProfit);
+        List<Movie> selectedMovies = movieController.getMaxProfitMovies(movies);
+        return new MaxProfitResponse(selectedMovies);
     }
 }

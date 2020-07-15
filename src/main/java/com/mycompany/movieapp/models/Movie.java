@@ -5,24 +5,28 @@
  */
 package com.mycompany.movieapp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
+import java.util.Date;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author Lavan Muthineni<muttineni.lavan@gmail.com>
  */
 public class Movie implements Comparable<Movie>{
+    
+    @JsonProperty
+    @NotEmpty
     private String name;
     
-    private DateTime startDate;
+    private Date startDate;
     
-    private DateTime endDate;
+    private Date endDate;
     
     public Movie(){}
     
-    public Movie(String name, DateTime startDate, DateTime endDate){
+    public Movie(String name, Date startDate, Date endDate){
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -39,14 +43,16 @@ public class Movie implements Comparable<Movie>{
     /**
      * @return the startDate
      */
-    public DateTime getStartDate() {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM")
+    public Date getStartDate() {
         return startDate;
     }
 
     /**
      * @return the endDate
      */
-    public DateTime getEndDate() {
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM")
+    public Date getEndDate() {
         return endDate;
     }   
 
@@ -60,21 +66,30 @@ public class Movie implements Comparable<Movie>{
     /**
      * @param startDate the startDate to set
      */
-    public void setStartDate(DateTime startDate) {
+    
+    @JsonProperty
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM")
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
     /**
      * @param endDate the endDate to set
      */
-    public void setEndDate(DateTime endDate) {
+    @JsonProperty
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM")
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
     
-    
-    
-    // Overriding the compareTo method
     public int compareTo(Movie movie) {
-      return (this.startDate).compareTo(movie.startDate);
-    }    
+        return (this.startDate).compareTo(movie.startDate);
+    }
+    
+    public String toString(){
+        return this.getName();
+    }
 }
+
+
+

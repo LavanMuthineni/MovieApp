@@ -7,7 +7,6 @@ package com.mycompany.movieapp;
 
 
 import io.dropwizard.Application;
-import io.dropwizard.Configuration;
 import io.dropwizard.setup.Environment;
 
 /**
@@ -24,7 +23,7 @@ public class MoviesApplication extends Application<AppConfig> {
     }
     
     public static void main(String[] args) throws Exception {
-        new MoviesApplication().run(args);
+        new MoviesApplication().run("server");
     }
 
 

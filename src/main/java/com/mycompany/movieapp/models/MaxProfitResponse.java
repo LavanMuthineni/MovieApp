@@ -5,6 +5,8 @@
  */
 package com.mycompany.movieapp.models;
 
+import java.util.List;
+
 /**
  *
  * @author Lavan Muthineni<muttineni.lavan@gmail.com>
@@ -13,8 +15,11 @@ public class MaxProfitResponse {
     
     private int maxProfit;
     
-    public MaxProfitResponse(int maxProfit){
-        this.maxProfit = maxProfit; 
+    private List<Movie> selectedMovies;
+    
+    public MaxProfitResponse(List<Movie> selectedMovies){
+        this.selectedMovies = selectedMovies;
+        this.maxProfit = selectedMovies.size(); 
     }
     
     public void setMaxProfit(int maxProfit){
@@ -23,6 +28,20 @@ public class MaxProfitResponse {
     
     public int getMaxProfit(){
         return maxProfit;
+    }
+
+    /**
+     * @return the selectedMovies
+     */
+    public List<Movie> getSelectedMovies() {
+        return selectedMovies;
+    }
+
+    /**
+     * @param selectedMovies the selectedMovies to set
+     */
+    public void setSelectedMovies(List<Movie> selectedMovies) {
+        this.selectedMovies = selectedMovies;
     }
     
 }
